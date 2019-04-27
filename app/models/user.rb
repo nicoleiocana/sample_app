@@ -8,7 +8,9 @@ class User < ApplicationRecord
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 5 }
+  validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
+  
+  self.per_page = 25
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : 
