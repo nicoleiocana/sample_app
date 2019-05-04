@@ -37,8 +37,12 @@ gem 'faker', '~> 1.9', '>= 1.9.3'
 gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 # Hooks into will_paginate to format the html to match Twitter Bootstrap styling
 gem 'bootstrap-will_paginate', '~> 1.0'
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+
+# Upload files, map them to a range of ORMs, store them on different backends.
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+
+# Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
+gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -78,6 +82,10 @@ end
 group :production do
   # Ruby interface to the PostgreSQL RDBMS
   gem 'pg', '~> 1.1', '>= 1.1.4'
+  
+  # The Ruby cloud services library
+  gem 'fog', '~> 2.1'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
