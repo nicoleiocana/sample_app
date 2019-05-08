@@ -7,7 +7,7 @@ class Micropost < ApplicationRecord
   
   validate :picture_size
   
-  self.per_page = 10
+  self.per_page = 20
   
   def picture_size
     if picture.size > 5.megabytes
