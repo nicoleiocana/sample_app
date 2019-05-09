@@ -50,6 +50,9 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Generate and install a favicon for all platforms with RealFaviconGenerator.
+gem 'rails_real_favicon', '~> 0.0.12'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
