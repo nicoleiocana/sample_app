@@ -30,3 +30,18 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+list = %w[happy sad angry fun dope humble chill wack nice evil rad puppy]
+list.each { |elem| Tag.create(name: elem) }
+microposts = Micropost.first(100)
+10.times do
+  microposts.each do |post|
+    rand_tag = Tag.order(Arel.sql('random()')).first
+    if post.tag_list.delete(' ').split(',').include?(rand_tag.name)
+      next
+    else
+      new_tagging = post.taggings.build(tag_id: rand_tag.id)
+      new_tagging.save if new_tagging.valid?
+    end
+  end
+end

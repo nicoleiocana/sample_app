@@ -1,6 +1,15 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:index, :create, :destroy]
   before_action :correct_user, only: [:destroy]
+  
+  def index
+    if params[:tag]
+      @microposts = Micropost.tagged_with(params[:tag]).paginate(page: params[:page])
+      @tag = Tag.find_by!(name: params[:tag])
+    else
+      redirect_to root_path
+    end
+  end
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
@@ -22,7 +31,7 @@ class MicropostsController < ApplicationController
   private
   
     def micropost_params
-      params.require(:micropost).permit(:content, :picture)
+      params.require(:micropost).permit(:content, :picture, :tag_list)
     end
     
     def correct_user

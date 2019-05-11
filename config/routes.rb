@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  get 'tags/:tag', to: 'microposts#index', as: :tag, :constraints  => { :tag => /[^\/]+/ }
   get '*path', to: redirect('/')
 end

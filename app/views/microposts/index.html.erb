@@ -1,0 +1,21 @@
+<% provide(:title, "Tagged Microposts") %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Tagged Microposts with <%= @tag.name %></h1>
+  
+  
+    <div id="tag_cloud">
+      <p>
+        <% tag_cloud Micropost.tag_counts, %w[s m l] do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </p>
+    </div>
+  
+    <ol class="microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+  </div>
+</div>

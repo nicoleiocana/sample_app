@@ -13,8 +13,19 @@
  */
  
   // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-  @import "bootstrap-sprockets";
-  @import "bootstrap";
+@import "bootstrap-sprockets";
+  
+body {
+  padding-top: 200px;
+}
+
+@media screen and (min-width: 768px) {
+body {
+  padding-top: 70px;
+  }
+}
+
+@import "bootstrap";
 
 /* variables, mixins, etc. */
 $gray-medium-light: #eaeaea;
@@ -25,10 +36,6 @@ $gray-medium-light: #eaeaea;
 }
 
 /* universal */
-
-body {
-  padding-top: 60px;
-}
 
 section {
   overflow: auto;
@@ -273,6 +280,10 @@ input {
       padding: 5px 0;
     }
   }
+  .tag {
+    display: block;
+    margin-left: 60px;
+  }
   .timestamp {
     color: $gray-light;
     display: block;
@@ -299,3 +310,9 @@ span.picture {
   }
 }
 
+#tag_cloud {
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
