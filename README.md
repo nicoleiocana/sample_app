@@ -2,7 +2,8 @@ Below is the [original README description](#ruby-on-rails-tutorial-sample-applic
 outlined by [Michael Hartl](http://www.michaelhartl.com/). There are notable
 resolutions that distinguish my sample application from others. I have listed
 them to benefit others who may utilize my code as a resource for troubleshooting.
-Moreover, I expanded on his sample application with additional components[^1] [^2].
+Moreover, I expanded on his sample application with additional components <sup>[1](#myfootnote1)</sup>
+<sup>[2](#myfootnote2)</sup>.
 
 | Issue                                                                                                                       | Resolution                                                                                                                                                                                                                                                                                        |
 |-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -11,30 +12,6 @@ Moreover, I expanded on his sample application with additional components[^1] [^
 | site blows up after refresh after a failed micropost submission                                                             | `get '*path', to: redirect('/')` in routes.rb                                                                                                                                                                                                                                                     |
 | mobile view non-existent                                                                                                    | `<meta name="viewport" content="width=device-width, initial-scale=1">` in application.html.erb & `@media screen and (min-width: 768px) { body { padding-top: 70px; } }` in application.scss                                                                                                       |
 
-[^1]: Tag cloud inspired by [Bala Paranj](https://rubyplus.com/about).
-
-    Referenced [this article](https://rubyplus.com/articles/4241-Tagging-from-Scratch-in-Rails-5).
-
-    Also, includes some seed data for fake tags.
-  
-    ```
-    list = %w[happy sad angry fun dope humble chill wack nice evil rad puppy]
-    list.each { |elem| Tag.create(name: elem) }
-    microposts = Micropost.first(100)
-    10.times do
-        microposts.each do |post|
-          rand_tag = Tag.order(Arel.sql('random()')).first
-          if post.tag_list.delete(' ').split(',').include?(rand_tag.name)
-            next
-          else
-            new_tagging = post.taggings.build(tag_id: rand_tag.id)
-            new_tagging.save if new_tagging.valid?
-          end
-        end
-    end
-    ```
-
-[^2]: Favicon through the installation of the rails_real_favicon gem.
 ---
 
 # Ruby on Rails Tutorial sample application
@@ -78,3 +55,28 @@ $ rails s
 
 For more information, see the
 [*Ruby on Rails Tutorial* book](https://www.railstutorial.org/book).
+
+---
+
+<a name="myfootnote1">1</a>: Tag cloud inspired by [Bala Paranj](https://rubyplus.com/about).  
+Referenced [this article](https://rubyplus.com/articles/4241-Tagging-from-Scratch-in-Rails-5).  
+Also, includes some seed data for fake tags.
+  
+```
+    list = %w[happy sad angry fun dope humble chill wack nice evil rad puppy]
+    list.each { |elem| Tag.create(name: elem) }
+    microposts = Micropost.first(100)
+    10.times do
+        microposts.each do |post|
+          rand_tag = Tag.order(Arel.sql('random()')).first
+          if post.tag_list.delete(' ').split(',').include?(rand_tag.name)
+            next
+          else
+            new_tagging = post.taggings.build(tag_id: rand_tag.id)
+            new_tagging.save if new_tagging.valid?
+          end
+        end
+    end
+```
+
+<a name="myfootnote2">2</a>: Favicon through the installation of the rails_real_favicon gem.
