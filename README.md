@@ -2,8 +2,8 @@ Below is the [original README description](#ruby-on-rails-tutorial-sample-applic
 outlined by [Michael Hartl](http://www.michaelhartl.com/). There are notable
 resolutions that distinguish my sample application from others. I have listed
 them to benefit others who may utilize my code as a resource for troubleshooting.
-Moreover, I expanded on his sample application with additional components <sup>[1](#myfootnote1)</sup>
-<sup>[2](#myfootnote2)</sup>.
+Moreover, I expanded on his sample application with additional components
+<sup name="1">[1](#myfootnote1)</sup> <sup name="2">[2](#myfootnote2)</sup>.
 
 | Issue                                                                                                                       | Resolution                                                                                                                                                                                                                                                                                        |
 |-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -78,5 +78,7 @@ Also, includes some seed data for fake tags.
         end
     end
 ```
+[↩](#1)
 
-<a name="myfootnote2">2</a>: Favicon through the installation of the rails_real_favicon gem.
+<a name="myfootnote2">2</a>: Favicon through the installation of the
+rails_real_favicon gem.[↩](#2)
