@@ -15,7 +15,8 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Micropost.count' do
       post microposts_path, params: { micropost: { content: '' } }
     end
-    assert_select 'div#error_explanation'
+    assert_not flash.empty?
+    #assert_select 'div#error_explanation'
     # Valid submission
     content = "This micropost is valid."
     picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
