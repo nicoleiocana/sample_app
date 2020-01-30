@@ -1,5 +1,5 @@
-Below is the [original README description](#ruby-on-rails-tutorial-sample-application)
-outlined by [Michael Hartl](http://www.michaelhartl.com/). There are notable
+Below is the [original README description](#ruby-on-rails-tutorial-sample-application-4th-edition)
+outlined by [Michael Hartl](http://www.michaelhartl.com/) outlined in the 4th edition of his book. There are notable
 resolutions that distinguish my sample application from others. I have listed
 them to benefit others who may utilize my code as a resource for troubleshooting.
 Moreover, I expanded on his sample application with additional components
@@ -7,18 +7,21 @@ Moreover, I expanded on his sample application with additional components
 
 | Issue                                                                                                                       | Resolution                                                                                                                                                                                                                                                                                        |
 |-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Clear input field after dismissing alert box](https://www.railstutorial.org/book/user_microposts#code-jquery_file_test)    | `var micropost_picture = $("#micropost_picture"); micropost_picture.val("");` in _micropost_form.html.erb                                                                                                                                                                                         |
-| [_failed_ micropost submission](https://www.railstutorial.org/book/user_microposts#code-microposts_create_action_with_feed) | `<% if @feed_items.any? %> <ol class="microposts"> <%= render @feed_items %> </ol> <%= will_paginate @feed_items %> <% else %> <div class="alert alert-info"> Micropost feed will return after refreshing the page or completing the form with no errors. </div> <% end %>` in the _feed.html.erb |
+| [Clear input field after dismissing alert box](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/user_microposts#sec-image_validation)    | `var micropost_picture = $("#micropost_picture"); micropost_picture.val("");` in _micropost_form.html.erb                                                                                                                                                              |
+| [_failed_ micropost submission](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/user_microposts#sec-a_proto_feed) | `<% if @feed_items.any? %> <ol class="microposts"> <%= render @feed_items %> </ol> <%= will_paginate @feed_items %> <% else %> <div class="alert alert-info"> Others are excited to view your first micropost displayed in your feed! </div> <% end %>` in _feed.html.erb                    |
+| | `def create @micropost = current_user.microposts.build(micropost_params) if @micropost.save flash[:success] = "Micropost created!" redirect_to root_path else flash[:danger] = "Micropost was not created successfully" redirect_back(fallback_location: root_path) end end` in microposts_controller.rb                                                                                                                      |
+| | `assert_not flash.empty?` on line 18 in microposts_interface_test.rb file for the integration test                                                                                                                                                                                                                                                                                                                            |
+| | Deleting the `<%= render 'shared/error_messages', object: f.object %>` atop the _micropost_form.html.erb in the shared folder                                                                                                                                                                                                                                                                                                 |
 | site blows up after refresh after a failed micropost submission                                                             | `get '*path', to: redirect('/')` in routes.rb                                                                                                                                                                                                                                                     |
 | mobile view non-existent                                                                                                    | `<meta name="viewport" content="width=device-width, initial-scale=1">` in application.html.erb & `@media screen and (min-width: 768px) { body { padding-top: 70px; } }` in application.scss                                                                                                       |
 
 ---
 
-# Ruby on Rails Tutorial sample application
+# Ruby on Rails Tutorial Sample Application 4th Edition
 
 This is the sample application for
 [*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](https://www.railstutorial.org/)
+Learn Web Development with Rails, 4th edition*](https://www.learnenough.com/ruby-on-rails-4th-edition-tutorial/beginning)
 by [Michael Hartl](http://www.michaelhart.com/).
 
 ## License
@@ -47,7 +50,7 @@ Finally, run the test suite to verify that everything is working correctly:
 $ rails test
 ```
 
-If the test suite passes, you'll be ready to run the app in a local server:
+If the test suite passes, you'll be ready to run the app on http://localhost:3000. 
 
 ```
 $ rails s
@@ -82,3 +85,8 @@ Also, includes some seed data for fake tags.
 
 <a name="myfootnote2">2</a>: Favicon through the installation of the
 rails_real_favicon gem.[↩](#2)
+
+---
+
+## Screenshots
+
