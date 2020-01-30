@@ -90,3 +90,8 @@ rails_real_favicon gem.[↩](#2)
 
 ## Screenshots
 
+![Desktop Log In](https://imgur.com/JNBCp6Z)
+
+![Mobile User Home](https://imgur.com/F6TO79M)
+
+![Screen Record](https://imgur.com/Bhe8rTu)
