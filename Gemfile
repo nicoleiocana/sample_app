@@ -39,7 +39,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Upload files, map them to a range of ORMs, store them on different backends.
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 
 # Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
 gem 'mini_magick', '~> 4.9', '>= 4.9.3'
